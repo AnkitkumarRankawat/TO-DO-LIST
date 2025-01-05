@@ -1,0 +1,214 @@
+        :root {
+            --light-bg: #f0f4f8;
+            --dark-bg: #1e293b;
+            --light-text: #334155;
+            --dark-text: #f1f5f9;
+            --primary-color: #4caf50;
+            --secondary-color: #ff9800;
+            --hover-color: #388e3c;
+            --high-priority: #ef4444;
+            --medium-priority: #facc15;
+            --low-priority: #4ade80;
+            --card-shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: var(--light-bg);
+            color: var(--light-text);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 100%;
+            background: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 15px 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 4px 6px var(--card-shadow);
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        #theme-toggle {
+            padding: 10px 20px;
+            border: none;
+            background: var(--secondary-color);
+            color: #fff;
+            cursor: pointer;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        #theme-toggle:hover {
+            transform: scale(1.1);
+            background: var(--hover-color);
+        }
+
+        .todo-input {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        #new-task, #task-priority {
+            flex: 1;
+            padding: 10px;
+            font-size: 1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 5px;
+        }
+
+        #add-task {
+            padding: 10px 20px;
+            border: none;
+            background: var(--primary-color);
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        #add-task:hover {
+            transform: scale(1.1);
+            background: var(--hover-color);
+        }
+
+        #task-list {
+            width: 100%;
+            max-width: 800px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 0;
+            list-style: none;
+        }
+
+        #task-list li {
+            background: #fff;
+            padding: 15px;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px var(--card-shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .priority-high { border-color: var(--high-priority); }
+        .priority-medium { border-color: var(--medium-priority); }
+        .priority-low { border-color: var(--low-priority); }
+
+        .remove-btn {
+            padding: 5px 10px;
+            background: var(--high-priority);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #clear-all {
+            padding: 10px 20px;
+            background: var(--high-priority);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .shake {
+            animation: shake 0.3s;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .todo-input {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    
+    /* Updated Styles for Task Cards */
+    #task-list li {
+        background: var(--light-bg);
+        color: var(--light-text);
+        padding: 15px;
+        border: 2px solid var(--primary-color);
+        border-radius: 10px;
+        box-shadow: 0 4px 6px var(--card-shadow);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        animation: fadeIn 0.5s ease-in-out;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.dark-mode #task-list li {
+        background: var(--dark-bg);
+        color: var(--dark-text);
+    }
